@@ -1,19 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import PokemonList from "../components/PokemonList";
+import MOCK_DATA from "../mock";
+import Dashboard from "../components/Dashboard";
 
 const Dex = () => {
+  const pokeData = MOCK_DATA;
+  const [poke, setPoke] = useState([]);
   return (
     <div>
-      <div className="head">
-        <h1 className="headTitle">나만의 포켓몬</h1>
-        <div className="addForm">
-          <div className="addImageDiv">
-            <img className="addImage" src="../../public/pokeball-icon.png" />
-          </div>
-        </div>
-      </div>
+      <Dashboard poke={poke} setPoke={setPoke} />
 
-      <PokemonList />
+      <PokemonList pokeData={pokeData} poke={poke} setPoke={setPoke} />
     </div>
   );
 };
