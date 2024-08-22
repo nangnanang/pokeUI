@@ -1,14 +1,26 @@
-import React from "react";
+import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import MOCK_DATA from "../mock";
+import { PokemonContext, PokemonProvider } from "../context/Pokemon";
 
 const PokemonDetail = () => {
+  return (
+    <div>
+      <PokemonProvider>
+        <DetailCard />
+      </PokemonProvider>
+    </div>
+  );
+};
+
+export default PokemonDetail;
+
+const DetailCard = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const queryString = location.search.slice(4);
 
-  const pokeData = MOCK_DATA;
+  const pokeData = useContext(PokemonContext).pokeData;
   const pokemon = pokeData[queryString - 1];
 
   return (
@@ -29,8 +41,6 @@ const PokemonDetail = () => {
     </div>
   );
 };
-
-export default PokemonDetail;
 
 const Img = styled.img`
   width: 300px;
