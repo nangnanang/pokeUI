@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -7,7 +6,10 @@ const Home = () => {
 
   return (
     <HomeDiv>
-      <Img src="../../public/pokemon-logo.png" alt="Pokemon Logo" />
+      <Img
+        src="https://react-6-pokemon.vercel.app/assets/pokemon-logo-RN0wntMB.png"
+        alt="Pokemon Logo"
+      />
       <Button
         onClick={() => {
           navigate("/dex");

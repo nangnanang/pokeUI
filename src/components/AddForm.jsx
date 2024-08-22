@@ -1,4 +1,3 @@
-import React from "react";
 import AddCard from "./AddCard";
 import styled from "styled-components";
 
@@ -8,7 +7,10 @@ const AddForm = ({ data }) => {
   } else {
     return (
       <BlankImageDiv>
-        <BlankImg className="addImage" src="../../public/pokeball-icon.png" />
+        <BlankImg
+          className="addImage"
+          src="https://react-6-pokemon.vercel.app/assets/pokeball-13iwdk7Y.png"
+        />
       </BlankImageDiv>
     );
   }

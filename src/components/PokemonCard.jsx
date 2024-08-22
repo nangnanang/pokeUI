@@ -1,32 +1,11 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { PokeState } from "../context/Pokemon";
+import { PokemonContext } from "../context/Pokemon.jsx";
 
 const PokemonCard = ({ pokemon }) => {
-  const poke = useContext(PokeState).poke;
-  const setPoke = useContext(PokeState).setPoke;
+  const addBtn = useContext(PokemonContext).addBtn;
   const navigate = useNavigate();
-
-  const addBtn = (event) => {
-    event.stopPropagation();
-    let sameId = false;
-    for (const list of poke) {
-      if (list.id === pokemon.id) {
-        sameId = true;
-        break;
-      }
-    }
-    if (sameId) {
-      alert("이미 추가한 포케몬입니다");
-      return;
-    }
-    if (poke.length < 6) {
-      setPoke([...poke, pokemon]);
-    } else {
-      alert("더 이상 추가할 수 없습니다");
-    }
-  };
 
   return (
     <CardDiv
@@ -40,7 +19,9 @@ const PokemonCard = ({ pokemon }) => {
           <p>{pokemon.korean_name}</p>
           <p>No. {pokemon.id}</p>
         </div>
-        <CardButton onClick={addBtn}>추가</CardButton>
+        <CardButton value={pokemon.id} onClick={(event) => addBtn(event)}>
+          추가
+        </CardButton>
       </div>
     </CardDiv>
   );

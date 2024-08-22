@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import AddForm from "./AddForm";
 import styled from "styled-components";
-import { PokeState } from "../context/Pokemon";
+import { PokemonContext } from "../context/Pokemon.jsx";
 
 const Dashboard = () => {
-  const poke = useContext(PokeState).poke;
+  const poke = useContext(PokemonContext).selectedPokemon;
   return (
     <Head>
       <div>
@@ -41,8 +41,8 @@ const HeadTitle = styled.h1`
 
 const AddDiv = styled.div`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(6, minmax(50px, 150px));
+  gap: 20px;
   width: 100%;
   justify-items: center;
 `;

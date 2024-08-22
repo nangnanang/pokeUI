@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
-import { POKEMON } from "../context/Pokemon";
+import { PokemonContext } from "../context/Pokemon.jsx";
 
 const PokemonList = () => {
-  const pokeData = useContext(POKEMON);
+  const pokeData = useContext(PokemonContext).pokeData;
   return (
     <ListDiv>
       {pokeData.map((pokemon) => {

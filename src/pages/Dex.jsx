@@ -1,21 +1,15 @@
-import { useState } from "react";
 import PokemonList from "../components/PokemonList";
-import MOCK_DATA from "../mock";
 import Dashboard from "../components/Dashboard";
-import { POKEMON, PokeState } from "../context/Pokemon";
+import { PokemonProvider } from "../context/Pokemon.jsx";
 
 const Dex = () => {
-  const pokeData = MOCK_DATA;
-  const [poke, setPoke] = useState([]);
   return (
     <div>
-      <POKEMON.Provider value={pokeData}>
-        <PokeState.Provider value={{ poke, setPoke }}>
-          <Dashboard />
+      <PokemonProvider>
+        <Dashboard />
 
-          <PokemonList />
-        </PokeState.Provider>
-      </POKEMON.Provider>
+        <PokemonList />
+      </PokemonProvider>
     </div>
   );
 };

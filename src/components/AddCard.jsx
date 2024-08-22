@@ -1,21 +1,12 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CardButton, CardDiv } from "./PokemonCard";
-import { PokeState } from "../context/Pokemon";
+import { PokemonContext } from "../context/Pokemon.jsx";
 
 const AddCard = ({ data }) => {
-  const poke = useContext(PokeState).poke;
-  const setPoke = useContext(PokeState).setPoke;
+  const deleteBtn = useContext(PokemonContext).deleteBtn;
 
   const navigate = useNavigate();
-
-  const deleteData = poke.filter((list) => {
-    return !(list.id === data.id);
-  });
-  const deleteBtn = (event) => {
-    event.stopPropagation();
-    setPoke(deleteData);
-  };
 
   return (
     <CardDiv
@@ -28,7 +19,9 @@ const AddCard = ({ data }) => {
         <p>{data.korean_name}</p>
         <p>No. {data.id}</p>
       </div>
-      <CardButton onClick={deleteBtn}>삭제</CardButton>
+      <CardButton value={data.id} onClick={(event) => deleteBtn(event)}>
+        삭제
+      </CardButton>
     </CardDiv>
   );
 };
