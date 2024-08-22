@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { CardButton, CardDiv } from "./PokemonCard";
+import { PokeState } from "../context/Pokemon";
 
-const AddCard = ({ data, poke, setPoke }) => {
+const AddCard = ({ data }) => {
+  const poke = useContext(PokeState).poke;
+  const setPoke = useContext(PokeState).setPoke;
+
   const navigate = useNavigate();
+
   const deleteData = poke.filter((list) => {
     return !(list.id === data.id);
   });

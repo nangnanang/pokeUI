@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { PokeState } from "../context/Pokemon";
 
-const PokemonCard = ({ poke, pokemon, setPoke }) => {
+const PokemonCard = ({ pokemon }) => {
+  const poke = useContext(PokeState).poke;
+  const setPoke = useContext(PokeState).setPoke;
   const navigate = useNavigate();
 
   const addBtn = (event) => {

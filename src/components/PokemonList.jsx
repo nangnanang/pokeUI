@@ -1,23 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
+import { POKEMON } from "../context/Pokemon";
 
-const PokemonList = ({ pokeData, poke, setPoke }) => {
+const PokemonList = () => {
+  const pokeData = useContext(POKEMON);
   return (
-    // <Link to={`/pokemon-detail/${pokemon.id}`}>
     <ListDiv>
       {pokeData.map((pokemon) => {
-        return (
-          <PokemonCard
-            key={pokemon.id}
-            pokemon={pokemon}
-            poke={poke}
-            setPoke={setPoke}
-          />
-        );
+        return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
       })}
     </ListDiv>
-    // </Link>
   );
 };
 

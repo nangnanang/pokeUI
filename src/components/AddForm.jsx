@@ -2,9 +2,9 @@ import React from "react";
 import AddCard from "./AddCard";
 import styled from "styled-components";
 
-const AddForm = ({ data, poke, setPoke }) => {
+const AddForm = ({ data }) => {
   if (data) {
-    return <AddCard data={data} poke={poke} setPoke={setPoke} />;
+    return <AddCard data={data} />;
   } else {
     return (
       <BlankImageDiv>

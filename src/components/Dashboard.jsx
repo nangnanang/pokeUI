@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import AddForm from "./AddForm";
 import styled from "styled-components";
+import { PokeState } from "../context/Pokemon";
 
-const Dashboard = ({ poke, setPoke }) => {
+const Dashboard = () => {
+  const poke = useContext(PokeState).poke;
   return (
     <Head>
       <div>
         <HeadTitle>나만의 포켓몬</HeadTitle>
 
         <AddDiv>
-          <AddForm data={poke[0]} poke={poke} setPoke={setPoke} />
-          <AddForm data={poke[1]} poke={poke} setPoke={setPoke} />
-          <AddForm data={poke[2]} poke={poke} setPoke={setPoke} />
-          <AddForm data={poke[3]} poke={poke} setPoke={setPoke} />
-          <AddForm data={poke[4]} poke={poke} setPoke={setPoke} />
-          <AddForm data={poke[5]} poke={poke} setPoke={setPoke} />
+          <AddForm data={poke[0]} />
+          <AddForm data={poke[1]} />
+          <AddForm data={poke[2]} />
+          <AddForm data={poke[3]} />
+          <AddForm data={poke[4]} />
+          <AddForm data={poke[5]} />
         </AddDiv>
       </div>
     </Head>
