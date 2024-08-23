@@ -1,22 +1,20 @@
-import { useContext } from "react";
 import AddForm from "./AddForm";
 import styled from "styled-components";
-import { PokemonContext } from "../context/Pokemon.jsx";
+
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const poke = useContext(PokemonContext).selectedPokemon;
+  const poke = useSelector((state) => state.pokemon);
+  const indexArr = [0, 1, 2, 3, 4, 5];
   return (
     <Head>
       <div>
         <HeadTitle>나만의 포켓몬</HeadTitle>
 
         <AddDiv>
-          <AddForm data={poke[0]} />
-          <AddForm data={poke[1]} />
-          <AddForm data={poke[2]} />
-          <AddForm data={poke[3]} />
-          <AddForm data={poke[4]} />
-          <AddForm data={poke[5]} />
+          {indexArr.map((i) => {
+            return <AddForm key={i} data={poke[i]} />;
+          })}
         </AddDiv>
       </div>
     </Head>

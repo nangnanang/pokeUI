@@ -1,11 +1,12 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { PokemonContext } from "../context/Pokemon.jsx";
+
+import { addBtn } from "../redux/slices/pokemonSlice";
+import { useDispatch } from "react-redux";
 
 const PokemonCard = ({ pokemon }) => {
-  const addBtn = useContext(PokemonContext).addBtn;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <CardDiv
@@ -19,7 +20,13 @@ const PokemonCard = ({ pokemon }) => {
           <p>{pokemon.korean_name}</p>
           <p>No. {pokemon.id}</p>
         </div>
-        <CardButton value={pokemon.id} onClick={(event) => addBtn(event)}>
+        <CardButton
+          value={pokemon.id}
+          onClick={(event) => {
+            event.stopPropagation();
+            dispatch(addBtn(pokemon));
+          }}
+        >
           추가
         </CardButton>
       </div>

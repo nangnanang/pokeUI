@@ -1,10 +1,11 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CardButton, CardDiv } from "./PokemonCard";
-import { PokemonContext } from "../context/Pokemon.jsx";
+
+import { useDispatch } from "react-redux";
+import { deleteBtn } from "../redux/slices/pokemonSlice";
 
 const AddCard = ({ data }) => {
-  const deleteBtn = useContext(PokemonContext).deleteBtn;
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -19,7 +20,13 @@ const AddCard = ({ data }) => {
         <p>{data.korean_name}</p>
         <p>No. {data.id}</p>
       </div>
-      <CardButton value={data.id} onClick={(event) => deleteBtn(event)}>
+      <CardButton
+        value={data.id}
+        onClick={(event) => {
+          event.stopPropagation();
+          dispatch(deleteBtn(data));
+        }}
+      >
         삭제
       </CardButton>
     </CardDiv>

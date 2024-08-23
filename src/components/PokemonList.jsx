@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import MOCK_DATA from "../mock";
+
 import PokemonCard from "./PokemonCard";
 import styled from "styled-components";
-import { PokemonContext } from "../context/Pokemon.jsx";
 
 const PokemonList = () => {
-  const pokeData = useContext(PokemonContext).pokeData;
+  const pokeData = MOCK_DATA;
   return (
     <ListDiv>
       {pokeData.map((pokemon) => {

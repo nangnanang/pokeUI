@@ -1,15 +1,14 @@
 import PokemonList from "../components/PokemonList";
 import Dashboard from "../components/Dashboard";
-import { PokemonProvider } from "../context/Pokemon.jsx";
+import { Toaster } from "sonner";
 
 const Dex = () => {
   return (
     <div>
-      <PokemonProvider>
-        <Dashboard />
+      <Toaster richColors position="top-center" />
+      <Dashboard />
 
-        <PokemonList />
-      </PokemonProvider>
+      <PokemonList />
     </div>
   );
 };

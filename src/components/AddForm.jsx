@@ -1,7 +1,8 @@
+import React from "react";
 import AddCard from "./AddCard";
 import styled from "styled-components";
 
-const AddForm = ({ data }) => {
+const Form = ({ data }) => {
   if (data) {
     return <AddCard data={data} />;
   } else {
@@ -15,6 +16,8 @@ const AddForm = ({ data }) => {
     );
   }
 };
+
+const AddForm = React.memo(Form);
 
 export default AddForm;
 
