@@ -1,17 +1,12 @@
-import React from "react";
 import PokemonList from "../components/PokemonList";
+import Dashboard from "../components/Dashboard";
+import { Toaster } from "sonner";
 
 const Dex = () => {
   return (
     <div>
-      <div className="head">
-        <h1 className="headTitle">나만의 포켓몬</h1>
-        <div className="addForm">
-          <div className="addImageDiv">
-            <img className="addImage" src="../../public/pokeball-icon.png" />
-          </div>
-        </div>
-      </div>
+      <Toaster richColors position="top-center" />
+      <Dashboard />
 
       <PokemonList />
     </div>
