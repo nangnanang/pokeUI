@@ -3,8 +3,9 @@ import styled from "styled-components";
 
 import { addBtn } from "../redux/slices/pokemonSlice";
 import { useDispatch } from "react-redux";
+import React from "react";
 
-const PokemonCard = ({ pokemon }) => {
+const ListCard = ({ pokemon }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -33,6 +34,8 @@ const PokemonCard = ({ pokemon }) => {
     </CardDiv>
   );
 };
+
+const PokemonCard = React.memo(ListCard);
 
 export default PokemonCard;
 

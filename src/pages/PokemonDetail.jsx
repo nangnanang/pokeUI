@@ -33,12 +33,6 @@ const DetailCard = () => {
 
   const dispatch = useDispatch();
 
-  // const state = useSelector((state) => state).pokemon;
-  // console.log(state);
-  // useEffect(() => {
-  //   // alert("추가되었습니다");
-  // }, [state]);
-
   return (
     <div>
       <Img src={pokemon.img_url} alt={pokemon.korean_name} />
@@ -47,7 +41,7 @@ const DetailCard = () => {
         <P>타입 : {pokemon.types.join(", ")}</P>
         <P>{pokemon.description}</P>
       </div>
-      <Col>
+      <div>
         <GrayButton
           onClick={() => {
             navigate("/dex");
@@ -62,7 +56,7 @@ const DetailCard = () => {
         >
           추가
         </RedButton>
-      </Col>
+      </div>
     </div>
   );
 };
@@ -104,10 +98,4 @@ const RedButton = styled.button`
   &:hover {
     background-color: rgb(193, 0, 0);
   }
-`;
-
-const Col = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 `;
