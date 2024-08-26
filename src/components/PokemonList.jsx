@@ -7,8 +7,8 @@ const PokemonList = () => {
   const pokeData = MOCK_DATA;
   return (
     <ListDiv>
-      {pokeData.map((pokemon) => {
-        return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
+      {pokeData.map((data) => {
+        return <PokemonCard key={data.id} data={data} cue={true} />;
       })}
     </ListDiv>
   );
