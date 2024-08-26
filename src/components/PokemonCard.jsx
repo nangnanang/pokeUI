@@ -1,35 +1,47 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { addBtn } from "../redux/slices/pokemonSlice";
+import { addBtn, deleteBtn } from "../redux/slices/pokemonSlice";
 import { useDispatch } from "react-redux";
 import React from "react";
 
-const ListCard = ({ pokemon }) => {
+const ListCard = ({ data, cue }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   return (
     <CardDiv
       onClick={() => {
-        navigate(`/pokemon-detail?id=${pokemon.id}`);
+        navigate(`/pokemon-detail?id=${data.id}`);
       }}
     >
       <div>
-        <img src={pokemon.img_url} alt={pokemon.korean_name} />
+        <img src={data.img_url} alt={data.korean_name} />
         <div>
-          <p>{pokemon.korean_name}</p>
-          <p>No. {pokemon.id}</p>
+          <p>{data.korean_name}</p>
+          <p>No. {data.id}</p>
         </div>
-        <CardButton
-          value={pokemon.id}
-          onClick={(event) => {
-            event.stopPropagation();
-            dispatch(addBtn(pokemon));
-          }}
-        >
-          추가
-        </CardButton>
+        {cue ? (
+          <CardButton
+            value={data.id}
+            onClick={(event) => {
+              event.stopPropagation();
+              dispatch(addBtn(data));
+            }}
+          >
+            추가
+          </CardButton>
+        ) : (
+          <CardButton
+            value={data.id}
+            onClick={(event) => {
+              event.stopPropagation();
+              dispatch(deleteBtn(data));
+            }}
+          >
+            삭제
+          </CardButton>
+        )}
       </div>
     </CardDiv>
   );

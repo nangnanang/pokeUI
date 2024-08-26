@@ -1,10 +1,10 @@
 import React from "react";
-import AddCard from "./AddCard";
 import styled from "styled-components";
+import PokemonCard from "./PokemonCard";
 
 const Form = ({ data }) => {
   if (data) {
-    return <AddCard data={data} />;
+    return <PokemonCard data={data} cue={false} />;
   } else {
     return (
       <BlankImageDiv>
